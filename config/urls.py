@@ -19,5 +19,5 @@ from gacha import views as gacha_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gacha.urls')),
+    path('gacha/', include('gacha.urls')),
 ]
