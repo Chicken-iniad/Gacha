@@ -5,16 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="{% static 'gacha/css/default.css' %}" rel="stylesheet">
     <title>ログイン</title>
+      <style>
+        .title {
+          color: #65c8a0;
+        }
+        form {
+          background-color: rgb(220, 246, 233);
+          padding: 15px 15px 0px 15px;
+          border: double; rgb(173, 254, 194);
+        }
+      </style>
   </head>
+
   <body>
-    <h1>ログイン</h1>
+    <div id ="header">
+      <img src="{% static 'gacha/img/sample.png' %}" alt="Logo">
+    </div>
+    <div class="container">
+    <h1 class="pt-5 title">ログイン</h1>
     <form action="{% url 'login' %}" method="post">
       {% csrf_token %}
           {{ form.as_p }}
           <p><input type="hidden" name="next" value="{{next}}"></p>
-          <p><input type="submit" value="ログイン"></p>
+          <p><input type="submit" class="btn btn-success" value="ログイン"></p>
       </form>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>
