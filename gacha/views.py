@@ -15,6 +15,7 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect(to='/gacha/')
     else:
         form = SignupForm()
 
