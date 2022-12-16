@@ -15,7 +15,7 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(to='/gacha/')
+            return redirect(to='/')
     else:
         form = SignupForm()
 
@@ -36,7 +36,7 @@ def login_view(request):
             if user:
                 login(request, user)
                 if next == 'None':
-                    return redirect(to='/gacha/user/')
+                    return redirect(to='/user/')
                 else:
                     return redirect(to=next)
     else:
