@@ -4,7 +4,8 @@ from .forms import SignupForm, LoginForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+import random
+import glob
 # Create your views here.
 
 def index(request):
@@ -74,3 +75,9 @@ def other_view(request):
     }
 
     return render(request, 'gacha/other.html', params)
+
+def select_image():
+    lst = ["SSR"]+["SR"]*9+["R"]*30+["C"]*60
+    rarity = random.choice(lst)
+    pathimage = 3
+    return  pathimage
