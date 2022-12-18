@@ -63,10 +63,14 @@
     <img src="{% static 'gacha/img/sample.png' %}" alt="Logo">
   </div>
   <div class="container">
-    <h1 class="pt-5">{{user.username}} さんのプロフィール</h1>
+    <h1 class="pt-5">{{user.username}} のイニアドモンスター</h1>
     <p>アカウント作成日：{{user.date_joined}}</p>
     <p>ガチャポイント</p>
-    <div class="gacha">
+    <small class="text-muted">100p貯めると・・・？</small>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-warning w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25p</div>
+    </div>
+    <div class="gacha mt-5">
       <h1>ガチャ画面</h1>
       <br><br><br><br><br>
       <br><br><br><br><br>
@@ -79,12 +83,12 @@
     <div class="get mt-4">
       <h3>獲得したイニモン</h3>
       <h5>コンプリート率 〇〇%</h5>
-      <i class="bi bi-star-fill one-three"></i><br>
+      <i class="bi bi-star-fill one-three"></i><hr>
       <i class="bi bi-star-fill one-three"></i>
-      <i class="bi bi-star-fill one-three"></i><br>
+      <i class="bi bi-star-fill one-three"></i><hr>
       <i class="bi bi-star-fill one-three"></i>
       <i class="bi bi-star-fill one-three"></i>
-      <i class="bi bi-star-fill one-three"></i><br>
+      <i class="bi bi-star-fill one-three"></i><hr>
       <i class="bi bi-star-fill four"></i>
       <i class="bi bi-star-fill four"></i>
       <i class="bi bi-star-fill four"></i>
