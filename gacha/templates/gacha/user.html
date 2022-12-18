@@ -10,6 +10,10 @@
   <link href="{% static 'gacha/css/default.css' %}" rel="stylesheet">
   <title>Gacha</title>
   <style>
+    .user {
+      background-color: rgb(255, 253, 237);
+    }
+
     .one-three {
       font-size: 25px;
       background-image: linear-gradient(45deg, #f6ef69 0%, #ffe82b 52%, #ffd400 90%);
@@ -38,9 +42,11 @@
       0% {
         background-position: 0 0;
       }
+
       50% {
         background-position: 100% 0;
       }
+
       100% {
         background-position: 0 0;
       }
@@ -51,10 +57,99 @@
     }
 
     .get {
-      background-color: rgb(230, 252, 251);
-
-      padding: 20px;
+      display: block;
+      position: relative;
+      margin: 15px auto;
+      padding: 10px 0;
+      background-color: #e7fcfb;
     }
+
+    .ribbon {
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      padding: 5px 0;
+      margin: 0 0 0 -20px;
+      width: calc(100% + 20px);
+      color: white;
+      background: #70a6ff;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .ribbon h3 {
+      margin: 0;
+      padding: 0 30px 0 15px;
+      border-top: dashed 1px #FFF;
+      border-bottom: dashed 1px #FFF;
+      font-size: 20px;
+      line-height: 46px;
+    }
+
+    .ribbon:after {
+      position: absolute;
+      content: '';
+      z-index: 1;
+      top: 0;
+      right: 0;
+      width: 0px;
+      height: 0px;
+      border-width: 30px 15px 30px 0px;
+      border-color: transparent #e7fcfb transparent transparent;
+      border-style: solid;
+    }
+
+    .ribbon:before {
+      position: absolute;
+      content: '';
+      top: 100%;
+      left: 0;
+      border: none;
+      border-bottom: solid 15px transparent;
+      border-right: solid 20px #6081b7;
+    }
+
+    .ribbon2 {
+      display: inline-block;
+      z-index: 1;
+      position: absolute;
+      right: 0;
+      top: 10px;
+      box-sizing: border-box;
+      padding: 0 10px;
+      margin: 0;
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      letter-spacing: 0.1em;
+      color: white;
+      background: #ff7470;
+      box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+    .ribbon2:before {
+      position: absolute;
+      content: '';
+      top: -8px;
+      right: -7px;
+      border: none;
+      height: 38px;
+      width: 7px;
+      background: #ff7470;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .ribbon2:after {
+      position: absolute;
+      content: '';
+      top: -7px;
+      right: -5px;
+      border: none;
+      height: 7px;
+      width: 5px;
+      background: #b25552;
+      border-radius: 0 5px 5px 0;
+    }
+
   </style>
 </head>
 
@@ -63,12 +158,13 @@
     <img src="{% static 'gacha/img/sample.png' %}" alt="Logo">
   </div>
   <div class="container">
-    <h1 class="pt-5">{{user.username}} のイニアドモンスター</h1>
-    <p>アカウント作成日：{{user.date_joined}}</p>
-    <p>ガチャポイント</p>
-    <small class="text-muted">100p貯めると・・・？</small>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped bg-warning w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25p</div>
+    <div class="user mt-5 p-3">
+      <h1>{{user.username}} のイニアドモンスター</h1>
+      <p>アカウント作成日：{{user.date_joined}}</p>
+      <small class="text-muted">ガチャポイント</small>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-warning w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25p</div>
+      </div>
     </div>
     <div class="gacha mt-5">
       <h1>ガチャ画面</h1>
@@ -78,23 +174,31 @@
       <br><br><br><br><br>
     </div>
     <div class="d-grid gap-2 mt-3">
-      <button onclick="" class="btn btn-outline-warning btn-lg">シングルガチャを引く</button>
-    <div>
-    <div class="get mt-4">
-      <h3>獲得したイニモン</h3>
-      <h5>コンプリート率 〇〇%</h5>
-      <i class="bi bi-star-fill one-three"></i><hr>
-      <i class="bi bi-star-fill one-three"></i>
-      <i class="bi bi-star-fill one-three"></i><hr>
-      <i class="bi bi-star-fill one-three"></i>
-      <i class="bi bi-star-fill one-three"></i>
-      <i class="bi bi-star-fill one-three"></i><hr>
-      <i class="bi bi-star-fill four"></i>
-      <i class="bi bi-star-fill four"></i>
-      <i class="bi bi-star-fill four"></i>
-      <i class="bi bi-star-fill four"></i>
-    <div>
-  <div>
+      <button onclick="" class="btn btn-warning btn-lg">シングルガチャを引く</button>
+    </div>
+    <div class="get mt-5">
+      <div class="ribbon">
+        <h3>獲得したイニモン</h3>
+      </div>
+      <h5 class="ribbon2 mt-4">コンプリート率 〇〇%</h5>
+      <div class="p-3">
+        <i class="bi bi-star-fill one-three"></i>
+        <hr>
+        <i class="bi bi-star-fill one-three"></i>
+        <i class="bi bi-star-fill one-three"></i>
+        <hr>
+        <i class="bi bi-star-fill one-three"></i>
+        <i class="bi bi-star-fill one-three"></i>
+        <i class="bi bi-star-fill one-three"></i>
+        <hr>
+        <i class="bi bi-star-fill four"></i>
+        <i class="bi bi-star-fill four"></i>
+        <i class="bi bi-star-fill four"></i>
+        <i class="bi bi-star-fill four"></i>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
