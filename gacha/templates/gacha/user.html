@@ -10,6 +10,12 @@
   <link href="{% static 'gacha/css/default.css' %}" rel="stylesheet">
   <title>Gacha</title>
   <style>
+    .btn-sm {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
     .user {
       background-color: rgb(255, 253, 237);
     }
@@ -156,6 +162,7 @@
 <body>
   <div id="header">
     <img src="{% static 'gacha/img/sample.png' %}" alt="Logo">
+    <button onclick="location.href='{% url 'logout' %}'" class="btn btn-secondary btn-sm">ログアウト</button>
   </div>
   <div class="container">
     <div class="user mt-5 p-3">
