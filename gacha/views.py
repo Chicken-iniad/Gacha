@@ -66,16 +66,6 @@ def user_view(request):
 
     return render(request, 'gacha/user.html', params)
 
-@login_required
-def other_view(request):
-    users = User.objects.exclude(username=request.user.username)
-
-    params = {
-        'users': users
-    }
-
-    return render(request, 'gacha/other.html', params)
-
 def select_image():
     lst = ["SSR"]+["SR"]*9+["R"]*30+["C"]*60
     rarity = random.choice(lst)
