@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import random
 import glob
+from .models import Monster
 # Create your views here.
 
 def index(request):
