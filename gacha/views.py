@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import random
 import glob
+import os
 from .models import Monster
 # Create your views here.
 
@@ -67,8 +68,19 @@ def user_view(request):
 
     return render(request, 'gacha/user.html', params)
 
-def select_image():
+
+def select_image(request):
     lst = ["SSR"]+["SR"]*9+["R"]*30+["C"]*60
     rarity = random.choice(lst)
-    pathimage = 3
-    return  pathimage
+    dir = "gacha/static/gacha/img/"+rarity+"/"
+    imgnum = random.randint(1, sum(os.path.isfile(os.path.join(dir, name)) for name in os.listdir(dir)))
+    # imgpath <- 取得したモンスターの画像のパス
+    imgpath = "gacha/img/"+rarity+"/" + str(imgnum) + ".png"
+    #現在のユーザーのモンスターリストに取得したモンスターを追加
+    # monster = Monster(user=request.user)
+    # monster.save()
+    # now = Monster.objects.filter(user=request.user).monsters
+    # monster = Monster(user=request.user, monsters=now + imgpath + ",")
+    # monster.save()
+    # #未実装箇所
+    return render(request, 'gacha/select_image.html', {'image_path': imgpath, 'rarity': rarity})
