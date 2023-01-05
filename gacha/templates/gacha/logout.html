@@ -7,6 +7,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="{% static 'gacha/css/default.css' %}" rel="stylesheet">
     <title>ログアウト</title>
+    <style>
+    .balloon {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .balloon .faceicon {
+      float: left;
+      margin-right: -90px;
+      width: 80px;
+    }
+
+    .balloon .faceicon img {
+      width: 100%;
+      height: auto;
+      border: solid 3px #fed6d6;
+      border-radius: 40%;
+    }
+
+    .balloon .chatting {
+      width: 100%;
+    }
+
+    .says {
+      display: inline-block;
+      position: relative;
+      margin: 5px 0 0 105px;
+      padding: 17px 13px;
+      border-radius: 12px;
+      background: #fed6d6;
+    }
+
+    .says:after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 18px;
+      left: -24px;
+      border: 12px solid transparent;
+      border-right: 12px solid #fed6d6;
+    }
+
+    .says p {
+      margin: 0;
+      padding: 0;
+    }
+    </style>
 </head>
 <body>
   <div id ="header">
@@ -14,7 +61,16 @@
   </div>
   <div class="container">
     <h1 class="mt-5">ログアウトしました。</h1>
-    <h3>また遊びに来てね！！</h3>
+    <div class="balloon mt-3">
+      <div class="faceicon">
+      <img src="{% static 'gacha/img/top_icon.png' %}" class="p-1" alt="Logo">
+      </div>
+      <div class="chatting">
+        <div class="says">
+          <p>また遊びに来てね！！</p>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
