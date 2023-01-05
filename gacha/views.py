@@ -62,10 +62,16 @@ def logout_view(request):
 def user_view(request):
     user = request.user
 
-    params = {
-        'user': user
-    }
+    # monstersは文字列なので、リストに変換する必要がある
 
+    # mosters_str = Monster.objects.filter(user=request.user).mosters
+    # monsters_lst = mosters_str.split(",")
+    
+    params = {
+        'user': user,
+        # 'monsters': monsters_lst
+    }
+    
     return render(request, 'gacha/user.html', params)
 
 
