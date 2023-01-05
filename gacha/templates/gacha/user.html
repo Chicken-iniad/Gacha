@@ -61,6 +61,11 @@
 
     .gacha {
       background-color: rgb(224, 222, 221);
+      display: flex;
+      justify-content: center;
+    }
+    .gacha img {
+      width: 60%;
     }
 
     .get {
@@ -166,7 +171,7 @@
       justify-content: space-between;
     }
     li {
-      width: 33%;
+      width: 40%;
       list-style: none;
       margin: 5px;
     }
@@ -188,11 +193,7 @@
       </div>
     </div>
     <div class="gacha mt-5">
-      <h1>ガチャ画面</h1>
-      <br><br><br><br><br>
-      <br><br><br><br><br>
-      <br><br><br><br><br>
-      <br><br><br><br><br>
+      <img src="{% static 'gacha/img/gachagacha.png' %}" alt="">
     </div>
     <div class="d-grid gap-2 mt-3">
         <button onclick="location.href='{% url 'select_image' %}'" class="btn btn-warning btn-lg" name="start_gacha">シングルガチャを引く</button>
