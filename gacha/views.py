@@ -64,12 +64,10 @@ def user_view(request):
 
     # monstersは文字列なので、リストに変換する必要がある
 
-    # mosters_str = Monster.objects.filter(user=request.user).mosters
-    # monsters_lst = mosters_str.split(",")
-    
+    monsters = Monster.objects.filter(user=user)
     params = {
         'user': user,
-        # 'monsters': monsters_lst
+        'monsters': monsters
     }
     
     return render(request, 'gacha/user.html', params)
@@ -83,10 +81,7 @@ def select_image(request):
     # imgpath <- 取得したモンスターの画像のパス
     imgpath = "gacha/img/"+rarity+"/" + str(imgnum) + ".png"
     #現在のユーザーのモンスターリストに取得したモンスターを追加
-    # monster = Monster(user=request.user)
-    # monster.save()
-    # now = Monster.objects.filter(user=request.user).monsters
-    # monster = Monster(user=request.user, monsters=now + imgpath + ",")
-    # monster.save()
-    # #未実装箇所
+    monster = Monster(user=request.user, monsters= imgpath)
+    monster.save()
+    #未実装箇所
     return render(request, 'gacha/select_image.html', {'image_path': imgpath, 'rarity': rarity})

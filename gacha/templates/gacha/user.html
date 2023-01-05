@@ -156,7 +156,20 @@
       background: #b25552;
       border-radius: 0 5px 5px 0;
     }
-
+    .monsters {
+      width: 100%;
+      border-radius: 15%;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    li {
+      width: 33%;
+      list-style: none;
+      margin: 5px;
+    }
   </style>
 </head>
 
@@ -190,6 +203,13 @@
       </div>
       <h5 class="ribbon2 mt-4">コンプリート率 〇〇%</h5>
       <div class="p-3">
+        <ul>
+          {% for monster in monsters %}
+          <li><img src="{% static monster.monsters %}" alt="" class="monsters"></li>
+          {% empty %}
+          <li>まだ獲得したイニモンはありません</li>
+          {% endfor %}
+        </ul>
         <i class="bi bi-star-fill one-three"></i>
         <hr>
         <i class="bi bi-star-fill one-three"></i>
