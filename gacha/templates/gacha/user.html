@@ -64,8 +64,13 @@
       display: flex;
       justify-content: center;
     }
+
     .gacha img {
       width: 60%;
+    }
+
+    .dropdown {
+      text-align: right;
     }
 
     .get {
@@ -161,15 +166,18 @@
       background: #b25552;
       border-radius: 0 5px 5px 0;
     }
+
     .monsters {
       width: 100%;
       border-radius: 15%;
     }
+
     ul {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
     }
+
     li {
       width: 40%;
       list-style: none;
@@ -195,8 +203,17 @@
     <div class="gacha mt-5">
       <img src="{% static 'gacha/img/gachagacha.png' %}" alt="">
     </div>
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary rounded-pill dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">排出率を見る</button>
+      <div class="dropdown-menu p-3 text-muted" style="max-width: 300px;">
+        <p>SSR...1.00%</p>
+        <p>SR.....9.00%</p>
+        <p>R.......30.0%</p>
+        <p class="mb-0">C.......60.0%</p>
+      </div>
+    </div>
     <div class="d-grid gap-2 mt-3">
-        <button onclick="location.href='{% url 'select_image' %}'" class="btn btn-warning btn-lg" name="start_gacha">シングルガチャを引く</button>
+      <button onclick="location.href='{% url 'select_image' %}'" class="btn btn-warning btn-lg" name="start_gacha">シングルガチャを引く</button>
     </div>
     <div class="get mt-5">
       <div class="ribbon">
