@@ -1,14 +1,13 @@
 databases:
-  - name: iniad-monsters
+  - name: blog-sample-db
     plan: free
-    databaseName: iniad-monsters
-    user: iniad-user
+    databaseName: blog_sample
+    user: blog_sample
 
 services:
   - type: web
     name: INIMON
     env: python
-    region: singapore
     plan: free
     branch: production
     buildCommand: "./build.sh"
@@ -18,7 +17,7 @@ services:
         value: 3.8.2
       - key: DATABASE_URL
         fromDatabase:
-          name: iniad-monsters
+          name: blog-sample-db
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
