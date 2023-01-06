@@ -2,12 +2,13 @@ databases:
   - name: iniad-monsters
     plan: free
     databaseName: iniad-monsters
-    user: iniad-monsters
+    user: iniad-user
 
 services:
   - type: web
     name: INI'MON
     env: python
+    region: singapore
     plan: free
     branch: production
     buildCommand: "./build.sh"
