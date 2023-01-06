@@ -6,3 +6,4 @@ from django.contrib.auth.models import User
 class Monster(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_name')
     monsters = models.TextField(null=True, blank=True)
+    rarity = models.CharField(max_length=10, null=True, blank=True)

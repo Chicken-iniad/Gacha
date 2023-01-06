@@ -64,10 +64,17 @@ def user_view(request):
 
     # monstersは文字列なので、リストに変換する必要がある
 
-    monsters = Monster.objects.filter(user=user)
+    c_monsters = Monster.objects.filter(user=user).filter(rarity="C").order_by('monsters')
+    r_monsters = Monster.objects.filter(user=user).filter(rarity="R").order_by('monsters')
+    sr_monsters = Monster.objects.filter(user=user).filter(rarity="SR").order_by('monsters')
+    ssr_monsters = Monster.objects.filter(user=user).filter(rarity="SSR").order_by('monsters')
+    
     params = {
         'user': user,
-        'monsters': monsters
+        'c_monsters': c_monsters,
+        'r_monsters': r_monsters,
+        'sr_monsters': sr_monsters,
+        'ssr_monsters': ssr_monsters,
     }
     
     return render(request, 'gacha/user.html', params)
@@ -81,7 +88,7 @@ def select_image(request):
     # imgpath <- 取得したモンスターの画像のパス
     imgpath = "gacha/img/"+rarity+"/" + str(imgnum) + ".png"
     #現在のユーザーのモンスターリストに取得したモンスターを追加
-    monster = Monster(user=request.user, monsters= imgpath)
+    monster = Monster(user=request.user, monsters= imgpath, rarity=rarity)
     monster.save()
     #未実装箇所
     return render(request, 'gacha/select_image.html', {'image_path': imgpath, 'rarity': rarity})
