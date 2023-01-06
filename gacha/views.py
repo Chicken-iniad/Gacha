@@ -69,12 +69,19 @@ def user_view(request):
     sr_monsters = Monster.objects.filter(user=user).filter(rarity="SR").order_by('monsters')
     ssr_monsters = Monster.objects.filter(user=user).filter(rarity="SSR").order_by('monsters')
     
+    total_get_kind=len(Monster.objects.filter(user=user).values_list('monsters', flat=True).order_by('monsters').distinct())
+    all_kind = sum(os.path.isfile(os.path.join("gacha/static/gacha/img/C/", name)) for name in os.listdir("gacha/static/gacha/img/C/")) + sum(os.path.isfile(os.path.join("gacha/static/gacha/img/R/", name)) for name in os.listdir("gacha/static/gacha/img/R/")) + sum(os.path.isfile(os.path.join("gacha/static/gacha/img/SR/", name)) for name in os.listdir("gacha/static/gacha/img/SR/")) + sum(os.path.isfile(os.path.join("gacha/static/gacha/img/SSR/", name)) for name in os.listdir("gacha/static/gacha/img/SSR/"))
+    complete_per = int((total_get_kind/all_kind)*100)
     params = {
         'user': user,
         'c_monsters': c_monsters,
         'r_monsters': r_monsters,
         'sr_monsters': sr_monsters,
         'ssr_monsters': ssr_monsters,
+        'total_get_kind': total_get_kind,
+        'all_kind': all_kind,
+        'complete_per': complete_per
+
     }
     
     return render(request, 'gacha/user.html', params)
