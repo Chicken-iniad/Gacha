@@ -86,7 +86,7 @@ def user_view(request):
     
     return render(request, 'gacha/user.html', params)
 
-
+@login_required
 def select_image(request):
     lst = ["SSR"]+["SR"]*9+["R"]*30+["C"]*60
     rarity = random.choice(lst)
