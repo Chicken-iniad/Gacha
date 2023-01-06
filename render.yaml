@@ -6,7 +6,7 @@ databases:
 
 services:
   - type: web
-    name: INI'MON
+    name: INIMON
     env: python
     region: singapore
     plan: free
